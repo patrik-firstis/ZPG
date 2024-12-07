@@ -1,8 +1,0 @@
-
-
-1. a) Ano, b) Ano, c) Ano bez svetla, d) Ne
-2. Ne
-3. Ano
-4. Ne
-5. a) Ano skoro všade, b) Ano -> Scény Shader, c) Ano -> Scény,
-6. Ne
