@@ -42,209 +42,186 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="src\application\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
+    <ClCompile Include="src\scenes\BallsScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Application.cpp">
+    <ClCompile Include="src\camera\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DrawableObject.cpp">
+    <ClCompile Include="src\tranformations\CompositeTransformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VertexShader.cpp">
+    <ClCompile Include="src\lights\DirectLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FragmentShader.cpp">
+    <ClCompile Include="src\objects\DrawableObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
+    <ClCompile Include="src\scenes\ForestScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MovingTransformation.cpp">
+    <ClCompile Include="src\shaderProgram\FragmentShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Observer.cpp">
+    <ClCompile Include="src\lights\Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Subject.cpp">
+    <ClCompile Include="src\models\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transformation.cpp">
-      <Filter>Source Files\Transformations</Filter>
+    <ClCompile Include="src\patterns\Observer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Rotation.cpp">
-      <Filter>Source Files\Transformations</Filter>
+    <ClCompile Include="src\lights\PointLight.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Translation.cpp">
-      <Filter>Source Files\Transformations</Filter>
+    <ClCompile Include="src\tranformations\Rotation.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scale.cpp">
-      <Filter>Source Files\Transformations</Filter>
+    <ClCompile Include="src\tranformations\Scale.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CompositeTransformation.cpp">
-      <Filter>Source Files\Transformations</Filter>
+    <ClCompile Include="src\scenes\Scene.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Light.cpp">
-      <Filter>Source Files\Lights</Filter>
+    <ClCompile Include="src\shaderProgram\Shader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DirectLight.cpp">
-      <Filter>Source Files\Lights</Filter>
+    <ClCompile Include="src\shaderProgram\ShaderLoader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PointLight.cpp">
-      <Filter>Source Files\Lights</Filter>
+    <ClCompile Include="src\shaderProgram\ShaderProgram.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpotLight.cpp">
-      <Filter>Source Files\Lights</Filter>
+    <ClCompile Include="src\shaderProgram\Shaders.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BallsScene.cpp">
-      <Filter>Source Files\Scenes</Filter>
+    <ClCompile Include="src\Source.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files\Scenes</Filter>
+    <ClCompile Include="src\lights\SpotLight.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ForestScene.cpp">
-      <Filter>Source Files\Scenes</Filter>
+    <ClCompile Include="src\patterns\Subject.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestScene.cpp">
-      <Filter>Source Files\Scenes</Filter>
+    <ClCompile Include="src\scenes\TestScene.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transformations.cpp">
-      <Filter>Source Files\Transformations</Filter>
+    <ClCompile Include="src\tranformations\Transformation.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files\Shaders</Filter>
+    <ClCompile Include="src\tranformations\Transformations.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProgram.cpp">
-      <Filter>Source Files\Shaders</Filter>
+    <ClCompile Include="src\tranformations\Translation.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shaders.cpp">
-      <Filter>Source Files\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderLoader.cpp">
-      <Filter>Source Files\Shaders</Filter>
+    <ClCompile Include="src\shaderProgram\VertexShader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Model.h">
+    <ClInclude Include="src\application\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Application.h">
+    <ClInclude Include="src\scenes\BallsScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="bushes.h">
+    <ClInclude Include="models\bushes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sphere.h">
+    <ClInclude Include="src\camera\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tree.h">
+    <ClInclude Include="src\tranformations\CompositeTransformation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DrawableObject.h">
+    <ClInclude Include="src\lights\DirectLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VertexShader.h">
+    <ClInclude Include="src\objects\DrawableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FragmentShader.h">
+    <ClInclude Include="src\scenes\ForestScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="src\shaderProgram\FragmentShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="plain.h">
+    <ClInclude Include="src\lights\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ForestScene.h">
+    <ClInclude Include="src\models\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TestScene.h">
+    <ClInclude Include="src\patterns\Observer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BallsScene.h">
+    <ClInclude Include="models\plain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MovingTransformation.h">
+    <ClInclude Include="src\lights\PointLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Observer.h">
+    <ClInclude Include="src\tranformations\Rotation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Subject.h">
+    <ClInclude Include="src\tranformations\Scale.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transformations.h">
-      <Filter>Header Files\Transformations</Filter>
+    <ClInclude Include="src\scenes\Scene.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transformation.h">
-      <Filter>Header Files\Transformations</Filter>
+    <ClInclude Include="src\shaderProgram\Shader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Rotation.h">
-      <Filter>Header Files\Transformations</Filter>
+    <ClInclude Include="src\shaderProgram\ShaderLoader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Translation.h">
-      <Filter>Header Files\Transformations</Filter>
+    <ClInclude Include="src\shaderProgram\ShaderProgram.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scale.h">
-      <Filter>Header Files\Transformations</Filter>
+    <ClInclude Include="src\shaderProgram\Shaders.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CompositeTransformation.h">
-      <Filter>Header Files\Transformations</Filter>
+    <ClInclude Include="models\sphere.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DirectLight.h">
-      <Filter>Header Files\Lights</Filter>
+    <ClInclude Include="src\lights\SpotLight.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Light.h">
-      <Filter>Header Files\Lights</Filter>
+    <ClInclude Include="src\patterns\Subject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpotLight.h">
-      <Filter>Header Files\Lights</Filter>
+    <ClInclude Include="src\scenes\TestScene.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PointLight.h">
-      <Filter>Header Files\Lights</Filter>
+    <ClInclude Include="src\tranformations\Transformation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Header Files\Scenes</Filter>
+    <ClInclude Include="src\tranformations\Transformations.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderProgram.h">
-      <Filter>Header Files\Shaders</Filter>
+    <ClInclude Include="src\tranformations\Translation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderLoader.h">
-      <Filter>Header Files\Shaders</Filter>
+    <ClInclude Include="models\tree.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Header Files\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="Shaders.h">
+    <ClInclude Include="src\shaderProgram\VertexShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="phong_vert.glsl">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="lambert_vert.glsl">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="constant_frag.glsl">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="constant_vert.glsl">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="lambert_frag.glsl">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="phong_frag.glsl">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="CurrentState.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
+    <None Include="src\shaders\constant_frag.glsl" />
+    <None Include="src\shaders\constant_vert.glsl" />
+    <None Include="src\shaders\lambert_frag.glsl" />
+    <None Include="src\shaders\lambert_vert.glsl" />
+    <None Include="src\shaders\phong_frag.glsl" />
+    <None Include="src\shaders\phong_vert.glsl" />
   </ItemGroup>
 </Project>
