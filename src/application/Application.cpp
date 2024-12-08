@@ -63,18 +63,19 @@ void Application::init() {
 void Application::run() {
 
 	
-	//Scene* testScene = new TestScene(windowWidth, windowHeight);
-	//testScene->init();
+	Scene* testScene = new TestScene(windowWidth, windowHeight);
+	testScene->init();
 	Scene* forestScene = new ForestScene(windowWidth, windowHeight);
 	forestScene->init();
 	Scene* ballsScene = new BallsScene(windowWidth, windowHeight);
 	ballsScene->init();
 
-	//this->scenes.push_back(testScene);
 	this->scenes.push_back(forestScene);
 	this->scenes.push_back(ballsScene);
+	this->scenes.push_back(testScene);
 
   glEnable(GL_DEPTH_TEST);
+	glfwSwapInterval(0);
 	glShadeModel(GL_SMOOTH);
   while (!glfwWindowShouldClose(window)) {
     // Clear the screen

@@ -76,13 +76,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLEW_STATIC_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\lib\glfw-3.4.bin.WIN32\include;$(SolutionDir)\..\lib\glm-master;$(SolutionDir)\..\lib\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\lib\glfw-3.4.bin.WIN32\include;$(SolutionDir)\..\lib\glm-master;$(SolutionDir)\..\lib\soil\include;$(SolutionDir)\..\lib\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\lib\glew-2.1.0\lib\Release\Win32;$(SolutionDir)\..\lib\glfw-3.4.bin.WIN32\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\lib\glew-2.1.0\lib\Release\Win32;$(SolutionDir)\..\lib\glfw-3.4.bin.WIN32\lib-vc2022;$(SolutionDir)\..\lib\soil\lib-vc2012\Platform_Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;glew32s.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -133,12 +133,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\models\CubemapModel.cpp" />
+    <ClCompile Include="src\object\Material.cpp" />
+    <ClCompile Include="src\models\NormalModel.cpp" />
+    <ClCompile Include="src\models\PositionModel.cpp" />
     <ClCompile Include="src\application\Application.cpp" />
     <ClCompile Include="src\scenes\BallsScene.cpp" />
     <ClCompile Include="src\camera\Camera.cpp" />
     <ClCompile Include="src\tranformations\CompositeTransformation.cpp" />
     <ClCompile Include="src\lights\DirectLight.cpp" />
-    <ClCompile Include="src\objects\DrawableObject.cpp" />
+    <ClCompile Include="src\object\DrawableObject.cpp" />
     <ClCompile Include="src\scenes\ForestScene.cpp" />
     <ClCompile Include="src\shaderProgram\FragmentShader.cpp" />
     <ClCompile Include="src\lights\Light.cpp" />
@@ -160,21 +164,30 @@
     <ClCompile Include="src\tranformations\Transformations.cpp" />
     <ClCompile Include="src\tranformations\Translation.cpp" />
     <ClCompile Include="src\shaderProgram\VertexShader.cpp" />
+    <ClCompile Include="src\textures\Texture.cpp" />
+    <ClCompile Include="src\models\TextureModel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\models\CubemapModel.h" />
+    <ClInclude Include="src\object\Material.h" />
+    <ClInclude Include="src\models\NormalModel.h" />
+    <ClInclude Include="src\models\data\triangle.h" />
+    <ClInclude Include="src\models\Models.h" />
+    <ClInclude Include="src\models\PositionModel.h" />
     <ClInclude Include="src\application\Application.h" />
+    <ClInclude Include="src\models\data\skybox\skycube.h" />
     <ClInclude Include="src\scenes\BallsScene.h" />
-    <ClInclude Include="models\bushes.h" />
+    <ClInclude Include="src\models\data\bushes.h" />
     <ClInclude Include="src\camera\Camera.h" />
     <ClInclude Include="src\tranformations\CompositeTransformation.h" />
     <ClInclude Include="src\lights\DirectLight.h" />
-    <ClInclude Include="src\objects\DrawableObject.h" />
+    <ClInclude Include="src\object\DrawableObject.h" />
     <ClInclude Include="src\scenes\ForestScene.h" />
     <ClInclude Include="src\shaderProgram\FragmentShader.h" />
     <ClInclude Include="src\lights\Light.h" />
     <ClInclude Include="src\models\Model.h" />
     <ClInclude Include="src\patterns\Observer.h" />
-    <ClInclude Include="models\plain.h" />
+    <ClInclude Include="src\models\data\plain.h" />
     <ClInclude Include="src\lights\PointLight.h" />
     <ClInclude Include="src\tranformations\Rotation.h" />
     <ClInclude Include="src\tranformations\Scale.h" />
@@ -183,15 +196,17 @@
     <ClInclude Include="src\shaderProgram\ShaderLoader.h" />
     <ClInclude Include="src\shaderProgram\ShaderProgram.h" />
     <ClInclude Include="src\shaderProgram\Shaders.h" />
-    <ClInclude Include="models\sphere.h" />
+    <ClInclude Include="src\models\data\sphere.h" />
     <ClInclude Include="src\lights\SpotLight.h" />
     <ClInclude Include="src\patterns\Subject.h" />
     <ClInclude Include="src\scenes\TestScene.h" />
     <ClInclude Include="src\tranformations\Transformation.h" />
     <ClInclude Include="src\tranformations\Transformations.h" />
     <ClInclude Include="src\tranformations\Translation.h" />
-    <ClInclude Include="models\tree.h" />
+    <ClInclude Include="src\models\data\tree.h" />
     <ClInclude Include="src\shaderProgram\VertexShader.h" />
+    <ClInclude Include="src\textures\Texture.h" />
+    <ClInclude Include="src\models\TextureModel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\constant_frag.glsl" />
@@ -200,6 +215,8 @@
     <None Include="src\shaders\lambert_vert.glsl" />
     <None Include="src\shaders\phong_frag.glsl" />
     <None Include="src\shaders\phong_vert.glsl" />
+    <None Include="src\shaders\skybox_frag.glsl" />
+    <None Include="src\shaders\skybox_vert.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

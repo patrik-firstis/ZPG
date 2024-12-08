@@ -11,5 +11,6 @@ public:
 	static ShaderProgram* Constant();
 	static ShaderProgram* Phong();
 	static ShaderProgram* Lambert();
+  static ShaderProgram* Skybox();
 };
 

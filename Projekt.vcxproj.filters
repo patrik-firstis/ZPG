@@ -57,7 +57,7 @@
     <ClCompile Include="src\lights\DirectLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\objects\DrawableObject.cpp">
+    <ClCompile Include="src\object\DrawableObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\scenes\ForestScene.cpp">
@@ -123,6 +123,24 @@
     <ClCompile Include="src\shaderProgram\VertexShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\textures\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\models\PositionModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\models\NormalModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\models\TextureModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\object\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\models\CubemapModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\application\Application.h">
@@ -131,7 +149,7 @@
     <ClInclude Include="src\scenes\BallsScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="models\bushes.h">
+    <ClInclude Include="src\models\data\bushes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\camera\Camera.h">
@@ -143,7 +161,7 @@
     <ClInclude Include="src\lights\DirectLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\DrawableObject.h">
+    <ClInclude Include="src\object\DrawableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\scenes\ForestScene.h">
@@ -161,7 +179,7 @@
     <ClInclude Include="src\patterns\Observer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="models\plain.h">
+    <ClInclude Include="src\models\data\plain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lights\PointLight.h">
@@ -188,7 +206,7 @@
     <ClInclude Include="src\shaderProgram\Shaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="models\sphere.h">
+    <ClInclude Include="src\models\data\sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\lights\SpotLight.h">
@@ -209,10 +227,37 @@
     <ClInclude Include="src\tranformations\Translation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="models\tree.h">
+    <ClInclude Include="src\models\data\tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\shaderProgram\VertexShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\textures\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\models\data\skybox\skycube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\models\PositionModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\models\Models.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\models\data\triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\models\NormalModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\models\TextureModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\object\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\models\CubemapModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -223,5 +268,7 @@
     <None Include="src\shaders\lambert_vert.glsl" />
     <None Include="src\shaders\phong_frag.glsl" />
     <None Include="src\shaders\phong_vert.glsl" />
+    <None Include="src\shaders\skybox_frag.glsl" />
+    <None Include="src\shaders\skybox_vert.glsl" />
   </ItemGroup>
 </Project>

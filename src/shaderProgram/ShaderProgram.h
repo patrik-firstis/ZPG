@@ -28,5 +28,6 @@ public:
 	void setUniform(const char* name, float value);
 	void setUniform(const char* name, int value);
 	void notify(Subject* subject) override;
+  void setMaterial(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 color);
 };
 

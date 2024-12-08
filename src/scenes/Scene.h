@@ -2,13 +2,14 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <unordered_map>
-#include "../objects/DrawableObject.h"
+#include "../object/DrawableObject.h"
 #include "../camera/Camera.h"
 #include "../lights/DirectLight.h"
 #include "../lights/PointLight.h"
 #include "../lights/SpotLight.h"
 #include "../shaderProgram/Shaders.h"
 #include "../tranformations/Transformations.h"
+#include "../models/Models.h"
 
 
 class Scene
@@ -16,8 +17,10 @@ class Scene
 protected:
 	int windowHeight, windowWidth;
 	Camera* camera;
+  DrawableObject* skybox = nullptr;
 	std::unordered_map<std::string, DrawableObject*> objects;
 	std::vector<Light*> lights;
+
 
 public:
 	Scene(int windowHeight, int windowWidth);

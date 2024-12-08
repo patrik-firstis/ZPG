@@ -73,8 +73,6 @@ void ShaderProgram::setUniform(const char* name, int value) {
 }
 
 
-
-
 void ShaderProgram::notify(Subject* subject)
 {
 	if (auto camera = dynamic_cast<Camera*>(subject)) {
@@ -102,4 +100,11 @@ void ShaderProgram::notify(Subject* subject)
 	else {
 		fprintf(stderr, "ShaderProgram::notify(unknown type)");
 	}
+}
+
+void ShaderProgram::setMaterial(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 color) {
+  this->setUniform("material.ambient", ambient);
+  this->setUniform("material.diffuse", diffuse);
+  this->setUniform("material.specular", specular);
+  this->setUniform("material.color", color);
 }

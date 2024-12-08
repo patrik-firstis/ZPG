@@ -3,15 +3,17 @@
 
 void TestScene::init()
 {
-	const float triangle[18] = {
-		-1.0f , 1.0f , 0.0f , 0.0f , 0.0f , 1.0f ,
-		1.0f , 1.0f , 0.0f , 0.0f , 0.0f , 1.0f ,
-		0.0f , 2.0f , 0.0f , 0.0f , 0.0f , 1.0f ,
-	};
 
-	ShaderProgram* shaderProgram = new ShaderProgram("default_vert.glsl","default_frag.glsl");
+
+	auto shaderProgram = Shaders::Constant();
+  auto shaderProgram2 = Shaders::Skybox();
+
 	this->camera = new Camera(windowWidth, windowHeight, glm::vec3(0.0f, 1.0f, 5.0f));
 	this->camera->addObserver(shaderProgram);
+  this->camera->addObserver(shaderProgram2);
 
-	this->objects["plain"] = new DrawableObject(new Model(triangle, sizeof(triangle)), shaderProgram);
+	this->objects["plain"] = new DrawableObject(Models::Triangle(), shaderProgram);
+
+  this->skybox = new DrawableObject(Models::Skybox(), shaderProgram2);
+
 }

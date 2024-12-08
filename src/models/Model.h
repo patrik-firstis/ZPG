@@ -3,17 +3,14 @@
 #include <glm/vec3.hpp> 
 
 class Model {
-public:
-  Model(const float* vertices, size_t size, glm::vec3 color = glm::vec3(0.385, 0.647, 0.812));
-  ~Model();
-
-  void draw();
-
-	glm::vec3 getColor() const { return color; }
-
-private:
+protected:
   GLuint VAO, VBO;
-	int numVertices;
+  int verticesCount;
+  bool disableDepth;
 
-	glm::vec3 color;
+public:
+  Model(int verticesCount, bool disableDepth = false);
+  virtual ~Model() = 0 {};
+
+  virtual void draw();
 };

@@ -1,5 +1,4 @@
 #include "BallsScene.h"
-#include "../../models/sphere.h"
 
 void BallsScene::init()
 {
@@ -16,17 +15,17 @@ void BallsScene::init()
 	this->camera = camera;
 	this->lights.push_back(light);
 
-	this->objects["sun"] = new DrawableObject(new Model(sphere, sizeof(sphere), glm::vec3(1.0,1.0,0.0)), constantShader);
+	this->objects["sun"] = new DrawableObject(Models::Sphere(), constantShader);
 	this->objects["sun"]->addTransform(Transformations::scale(0.5));
 
-	this->objects["ball1"] = new DrawableObject(new Model(sphere, sizeof(sphere)), phongShader);
+	this->objects["ball1"] = new DrawableObject(Models::Sphere(), phongShader);
 	this->objects["ball1"]->addTransform(Transformations::translate(2.0, 0.0, 2.0));
 	this->objects["ball1"]->addTransform(Transformations::rotateY(10.0, -1));
-	this->objects["ball2"] = new DrawableObject(new Model(sphere, sizeof(sphere)), phongShader);
+	this->objects["ball2"] = new DrawableObject(Models::Sphere(), phongShader);
 	this->objects["ball2"]->addTransform(Transformations::translate(2.0, 0.0, -2.0));
-	this->objects["ball3"] = new DrawableObject(new Model(sphere, sizeof(sphere)), phongShader);
+	this->objects["ball3"] = new DrawableObject(Models::Sphere(), phongShader);
 	this->objects["ball3"]->addTransform(Transformations::translate(-2.0, 0.0, -2.0));
-	this->objects["ball4"] = new DrawableObject(new Model(sphere, sizeof(sphere)), phongShader);
+	this->objects["ball4"] = new DrawableObject(Models::Sphere(), phongShader);
 	this->objects["ball4"]->addTransform(Transformations::translate(-2.0, 0.0, 2.0));
 }
 

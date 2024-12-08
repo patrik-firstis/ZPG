@@ -1,19 +1,18 @@
 #include "ForestScene.h"
-#include "../../models/tree.h"
-#include "../../models/plain.h"
-#include "../../models/sphere.h"
-#include "../../models/bushes.h"
+
 
 void ForestScene::init()
 {
 	// Shaders
 	auto phongShader = Shaders::Phong();
 	auto constantShader = Shaders::Constant();
+  auto skyboxShader = Shaders::Skybox(); 
 
 	// Camera
 	auto camera = new Camera(windowWidth, windowHeight, glm::vec3(10.0f, 5.0f, 10.0f), glm::vec3(0.0f, 5.0f, 0.0f));
 	camera->addObserver(phongShader);
 	camera->addObserver(constantShader);
+  camera->addObserver(skyboxShader);
 
 	// Lights
 	Light* directLight = new DirectLight(0, glm::vec3(-1.0, -1.0, -1.0), 0.1);
@@ -28,9 +27,9 @@ void ForestScene::init()
 	fireLight3->addObserver(phongShader);
 
 	// Lights Objects
-	auto fireLight1Object = new DrawableObject(new Model(sphere, sizeof(sphere), glm::vec4(1, 0, 0, 1)), constantShader);
-	auto fireLight2Object = new DrawableObject(new Model(sphere, sizeof(sphere), glm::vec4(0, 1, 0, 1)), constantShader);
-	auto fireLight3Object = new DrawableObject(new Model(sphere, sizeof(sphere), glm::vec4(0, 0, 1, 1)), constantShader);
+	auto fireLight1Object = new DrawableObject(Models::Sphere(), constantShader);
+	auto fireLight2Object = new DrawableObject(Models::Sphere(), constantShader);
+	auto fireLight3Object = new DrawableObject(Models::Sphere(), constantShader);
 
 	// Lights Transformations
 	auto fireLight1Position = Transformations::translate(40.0, 1.0, 40.0);
@@ -71,8 +70,12 @@ void ForestScene::init()
 
 	
 	// Create a model
-	this->objects["plain"] = new DrawableObject(new Model(plain, sizeof(plain), glm::vec4(0.1,1,0.1,1)), phongShader);
-	this->objects["plain"]->addTransform(Transformations::scale(1000.0));
+
+  this->skybox = new DrawableObject(Models::Skybox(), skyboxShader);
+
+	this->objects["plain"] = new DrawableObject(Models::Plain(), phongShader, new Material(glm::vec3(0.2, 1, 0.2)));
+	this->objects["plain"]->addTransform(Transformations::scale(100.0));
+
 
 	this->generateTrees(50, phongShader);
 	this->generateBushes(50, phongShader);
@@ -80,7 +83,7 @@ void ForestScene::init()
 	this->camera = camera;
 
 	this->lights.push_back(directLight);
-	//this->lights.push_back(flashLight);
+	this->lights.push_back(flashLight);
 	this->lights.push_back(fireLight1);
 	this->lights.push_back(fireLight2);
 	this->lights.push_back(fireLight3);
@@ -102,7 +105,7 @@ void ForestScene::generateTrees(int n, ShaderProgram* shaderProgram)
 
 		float randScale = (float)(rand() % 10) / 10 + 0.5;
 
-		DrawableObject* treeObj = new DrawableObject(new Model(tree, sizeof(tree)), shaderProgram);
+		auto treeObj = new DrawableObject(Models::Tree(), shaderProgram);
 		treeObj->addTransform(Transformations::scale(randScale));
 		treeObj->addTransform(Transformations::translate(randX * randXNeg, 0.0, randZ * randZNeg));
 		this->objects["tree" + std::to_string(i)] = treeObj;
@@ -121,7 +124,7 @@ void ForestScene::generateBushes(int n, ShaderProgram* shaderProgram)
 
 		float randScale = (float)(rand() % 10) / 10 + 0.5;
 
-		DrawableObject* bushObj = new DrawableObject(new Model(bushes, sizeof(bushes)), shaderProgram);
+		auto bushObj = new DrawableObject(Models::Bushes(), shaderProgram);
 		bushObj->addTransform(Transformations::scale(randScale));
 		bushObj->addTransform(Transformations::translate(randX * randXNeg, 0.0, randZ * randZNeg));
 		this->objects["bush" + std::to_string(i)] = bushObj;

@@ -6,7 +6,15 @@ in vec3 fragPosition;
 
 uniform vec3 viewPosition;
 uniform vec3 viewDirection;
-uniform vec3 objectColor;
+
+struct Material {
+  vec3 ambient;
+  vec3 diffuse;
+  vec3 specular;
+  vec3 color;
+};
+
+uniform Material material;
 
 struct Light {
   int type; // 0 = directional, 1 = point, 2 = spot
@@ -31,7 +39,7 @@ vec3 specularColor(Light light);
 float attenuation(Light light);
 
 void main() {
-	vec3 ambient = vec3(0.0, 0.0, 0.0);
+	vec3 ambient = vec3(0.0, 0.0, 0.0); 
   vec3 diffuse = vec3(0.0, 0.0, 0.0);
   vec3 specular = vec3(0.0, 0.0, 0.0);
 
@@ -42,7 +50,7 @@ void main() {
 		specular += specularColor(light) * attenuation(light) * light.intensity;
 	}
   
-  fragColor = vec4((ambient * objectColor) + (diffuse * objectColor) + specular, 0.0);
+  fragColor = vec4(material.ambient + (ambient * material.color) + (diffuse * material.color) * material.diffuse + specular * material.specular, 0.0);
 }
 
 vec3 diffuseColor(Light light) {

@@ -14,6 +14,9 @@ Scene::~Scene() {
 
 void Scene::draw() {
 	camera->updateMatrices();
+  if (this->skybox != nullptr) {
+    this->skybox->draw();
+  }
 	for (auto& light : this->lights) {
 		light->draw();
 	}

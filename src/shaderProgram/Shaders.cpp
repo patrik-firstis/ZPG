@@ -25,3 +25,9 @@ ShaderProgram* Shaders::Lambert() {
 	shaders.push_back(shader);
 	return shader;
 }
+
+ShaderProgram* Shaders::Skybox() {
+  auto shader = new ShaderProgram("src/shaders/skybox_vert.glsl", "src/shaders/skybox_frag.glsl");
+  shaders.push_back(shader);
+  return shader;
+}
