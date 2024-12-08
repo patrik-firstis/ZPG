@@ -73,10 +73,7 @@ void ForestScene::init()
 
   this->skybox = new DrawableObject(Models::Skybox(), skyboxShader);
 
-	this->objects["plain"] = new DrawableObject(Models::Plain(), phongShader, new Material(glm::vec3(0.2, 1, 0.2)));
-	this->objects["plain"]->addTransform(Transformations::scale(100.0));
-
-
+  this->generateGrass(phongShader);
 	this->generateTrees(50, phongShader);
 	this->generateBushes(50, phongShader);
 
@@ -91,6 +88,19 @@ void ForestScene::init()
 	this->objects["fireLight1"] = fireLight1Object;
 	this->objects["fireLight2"] = fireLight2Object;
 	this->objects["fireLight3"] = fireLight3Object;
+}
+
+void ForestScene::generateGrass(ShaderProgram* shaderProgram)
+{
+  auto grassMaterial = new Material(new Texture("src/models/textures/grass.png"));
+	for (int x = -100; x < 100; x += 10 ) {
+		for (int z = -100; z < 100; z += 10) {
+      auto grass = new DrawableObject(Models::Plain(), shaderProgram, grassMaterial);
+      grass->addTransform(Transformations::translate(x, 0.0, z));
+      grass->addTransform(Transformations::scale(5));
+			this->objects["grass" + std::to_string(x) + "|" + std::to_string(z)] = grass;
+		}
+	}
 }
 
 void ForestScene::generateTrees(int n, ShaderProgram* shaderProgram)
@@ -130,3 +140,4 @@ void ForestScene::generateBushes(int n, ShaderProgram* shaderProgram)
 		this->objects["bush" + std::to_string(i)] = bushObj;
 	}
 }
+

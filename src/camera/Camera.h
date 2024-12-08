@@ -18,7 +18,7 @@ private:
 	float pitch;         // Vertical angle (pitch)
 	float yaw;           // Horizontal angle (yaw)
 
-	float speed = 0.01f;
+	float speed = 0.1f;
 	float sensitivity = 50.0f;
 	float FOVdeg;
 

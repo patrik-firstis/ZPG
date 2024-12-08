@@ -3,9 +3,12 @@
 
 in vec3 fragNormal;
 in vec3 fragPosition;
+in vec2 fragTexCoord;
 
 uniform vec3 viewPosition;
 uniform vec3 viewDirection;
+
+uniform sampler2D textureUnitID;
 
 struct Material {
   vec3 ambient;
@@ -42,6 +45,14 @@ void main() {
 	vec3 ambient = vec3(0.0, 0.0, 0.0); 
   vec3 diffuse = vec3(0.0, 0.0, 0.0);
   vec3 specular = vec3(0.0, 0.0, 0.0);
+	vec3 color = vec3(0.0, 0.0, 0.0);
+
+	if (length(fragTexCoord) > 0.0) {
+		color = texture(textureUnitID, fragTexCoord).rgb;
+	}
+	else {
+		color = material.color;
+	}
 
   for (int i = 0; i < MAX_LIGHTS; i++) {
 		Light light = lights[i];
@@ -50,7 +61,7 @@ void main() {
 		specular += specularColor(light) * attenuation(light) * light.intensity;
 	}
   
-  fragColor = vec4(material.ambient + (ambient * material.color) + (diffuse * material.color) * material.diffuse + specular * material.specular, 0.0);
+  fragColor = vec4(material.ambient + (ambient * color) + (diffuse * color) * material.diffuse + specular * material.specular, 0.0);
 }
 
 vec3 diffuseColor(Light light) {

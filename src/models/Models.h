@@ -10,7 +10,7 @@
 #include "data/tree.h"
 #include "data/bushes.h"
 #include "data/plain.h"
-#include "data/skybox/skycube.h"
+#include "data/skycube.h"
 
 
 
@@ -34,11 +34,11 @@ public:
   }
 
   static Model* Plain() {
-    return new NormalModel(plain, sizeof(plain));
+    return new TextureModel(plain, sizeof(plain));
   }
 
   static Model* Skybox() {
-    return new CubemapModel(skycube, sizeof(skycube), "src/models/data/skybox/");
+    return new CubemapModel(skycube, sizeof(skycube), "src/models/textures/skybox/");
   }
 };
 

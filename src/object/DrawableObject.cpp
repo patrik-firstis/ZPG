@@ -21,6 +21,7 @@ void DrawableObject::draw() {
 
   this->shaderProgram->setUniform("modelMatrix", modelMatrix);
   this->shaderProgram->setMaterial(this->material->getAmbient(), this->material->getDiffuse(), this->material->getSpecular(), this->material->getColor());
+  this->material->bindTexture();
 
 	if (auto skyboxModel = dynamic_cast<CubemapModel*>(this->model)) {
 		glDepthMask(GL_FALSE);
@@ -32,6 +33,7 @@ void DrawableObject::draw() {
   else {
 		this->shaderProgram->use();
 		this->model->draw();
+		this->shaderProgram->setUniform("textureUnitID", 0);
   }
 	
 	glUseProgram(0);

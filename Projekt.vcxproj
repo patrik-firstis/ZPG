@@ -164,7 +164,7 @@
     <ClCompile Include="src\tranformations\Transformations.cpp" />
     <ClCompile Include="src\tranformations\Translation.cpp" />
     <ClCompile Include="src\shaderProgram\VertexShader.cpp" />
-    <ClCompile Include="src\textures\Texture.cpp" />
+    <ClCompile Include="src\object\Texture.cpp" />
     <ClCompile Include="src\models\TextureModel.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -205,7 +205,7 @@
     <ClInclude Include="src\tranformations\Translation.h" />
     <ClInclude Include="src\models\data\tree.h" />
     <ClInclude Include="src\shaderProgram\VertexShader.h" />
-    <ClInclude Include="src\textures\Texture.h" />
+    <ClInclude Include="src\object\Texture.h" />
     <ClInclude Include="src\models\TextureModel.h" />
   </ItemGroup>
   <ItemGroup>

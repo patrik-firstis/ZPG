@@ -1,6 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
-#include "../textures/Texture.h"
+#include "Texture.h"
 
 class Material {
 private:

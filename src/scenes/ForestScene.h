@@ -7,6 +7,7 @@ public:
 	ForestScene(int windowHeight, int windowWidth) : Scene(windowHeight, windowWidth) {};
 
 	void init() override;
+  void generateGrass(ShaderProgram* shaderProgram);
 	void generateTrees(int n, ShaderProgram* shaderProgram);
 	void generateBushes(int n, ShaderProgram* shaderProgram);
 };
