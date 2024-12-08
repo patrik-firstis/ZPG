@@ -130,10 +130,10 @@ void Application::handleInput(Scene* scene) {
 		scene->lookCamera(0, -1);
 	}
 
-  if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+  if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS && !zPressed) {
     zPressed = true;
   }
-	else
+	else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_RELEASE && zPressed)
 	{
     zPressed = false;
 	}

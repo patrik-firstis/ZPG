@@ -5,7 +5,7 @@ Material::Material(Texture* texture, glm::vec3 ambient, glm::vec3 diffuse, glm::
   this->diffuse = diffuse;
   this->specular = specular;
   this->texture = texture;
-  this->color = glm::vec3(0.0);
+  this->color = glm::vec3(-1.0);
   this->shininess = shininess;
 }
 
@@ -18,23 +18,23 @@ Material::Material(glm::vec3 color, glm::vec3 ambient, glm::vec3 diffuse, glm::v
 }
 
 glm::vec3 Material::getAmbient() const {
-  return ambient;
+  return this->ambient;
 }
 
 glm::vec3 Material::getDiffuse() const {
-  return diffuse;
+  return this->diffuse;
 }
 
 glm::vec3 Material::getSpecular() const {
-  return specular;
+  return this->specular;
 }
 
 glm::vec3 Material::getColor() const {
-  return color;
+  return this->color;
 }
 
 float Material::getShininess() const {
-  return shininess;
+  return this->shininess;
 }
 
 void Material::bindTexture() {

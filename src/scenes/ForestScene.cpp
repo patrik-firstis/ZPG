@@ -74,7 +74,7 @@ void ForestScene::init()
   this->skybox = new DrawableObject(ModelLib::Skybox(), skyboxShader);
 
   this->objects["house"] = new DrawableObject(ModelLib::House(), phongShader);
-	this->objects["login"] = new DrawableObject(ModelLib::Login(), phongShader);
+	this->objects["login"] = new DrawableObject(ModelLib::Login(MaterialLib::Gold()), phongShader);
   this->objects["login"]->addTransform(Transformations::translateY(7));
   this->objects["login"]->addTransform(Transformations::rotateY(90));
   this->objects["login"]->addTransform(Transformations::scale(3));

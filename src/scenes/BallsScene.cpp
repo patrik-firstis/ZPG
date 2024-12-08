@@ -15,7 +15,7 @@ void BallsScene::init()
 	this->camera = camera;
 	this->lights.push_back(light);
 
-	this->objects["sun"] = new DrawableObject(ModelLib::Sphere(), constantShader);
+	this->objects["sun"] = new DrawableObject(ModelLib::Sphere(MaterialLib::Base(glm::vec3(1,1,0))), constantShader);
 	this->objects["sun"]->addTransform(Transformations::scale(0.5));
 
 	this->objects["ball1"] = new DrawableObject(ModelLib::Sphere(), phongShader);

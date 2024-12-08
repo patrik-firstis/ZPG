@@ -47,7 +47,7 @@ void main() {
   vec3 specular = vec3(0.0, 0.0, 0.0);
 	vec3 color = vec3(0.0, 0.0, 0.0);
 
-	if (material.color == 0.0) {
+	if (material.color == vec3(-1.0)) {
 		color = texture(textureUnitID, fragTexCoord).rgb;
 	}
 	else {
