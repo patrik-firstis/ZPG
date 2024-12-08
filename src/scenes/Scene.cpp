@@ -39,3 +39,8 @@ void Scene::updatePerspective(int width, int height)
 {
 	camera->updatePerspective(width, height);
 }
+
+Camera* Scene::getCamera()
+{
+  return this->camera;
+}

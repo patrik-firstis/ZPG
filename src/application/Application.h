@@ -1,5 +1,4 @@
 #pragma once
-#define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
@@ -14,6 +13,9 @@ private:
 	std::vector<Scene*> scenes;
 	int currentScene = 0;
 	bool tabPressed = false;
+  bool leftClickPressed = false;
+  bool zPressed = false;
+  bool shiftPressed = false;
 
 public:
   Application(int windowWidth, int windowHeight);

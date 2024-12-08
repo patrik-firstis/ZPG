@@ -1,7 +1,7 @@
 #include "CubemapModel.h"
 #include "SOIL.h"
 
-CubemapModel::CubemapModel(const float* vertices, size_t size, std::string path) : Model(size / sizeof(float) / 3){
+CubemapModel::CubemapModel(const float* vertices, size_t size, std::string path) : Model(size / sizeof(float) / 3, new Material()){
 	glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);

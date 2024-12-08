@@ -123,7 +123,7 @@
     <ClCompile Include="src\shaderProgram\VertexShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\object\Texture.cpp">
+    <ClCompile Include="src\material\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\models\PositionModel.cpp">
@@ -135,10 +135,22 @@
     <ClCompile Include="src\models\TextureModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\object\Material.cpp">
+    <ClCompile Include="src\material\Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\models\CubemapModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\models\AssimpModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\material\MaterialLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\material\TextureLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\models\ModelLib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -233,7 +245,7 @@
     <ClInclude Include="src\shaderProgram\VertexShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\object\Texture.h">
+    <ClInclude Include="src\material\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\models\data\skybox\skycube.h">
@@ -242,7 +254,7 @@
     <ClInclude Include="src\models\PositionModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\models\Models.h">
+    <ClInclude Include="src\models\ModelLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\models\data\triangle.h">
@@ -254,10 +266,19 @@
     <ClInclude Include="src\models\TextureModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\object\Material.h">
+    <ClInclude Include="src\material\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\models\CubemapModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\models\AssimpModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\material\MaterialLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\material\TextureLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,9 +4,9 @@
 void ForestScene::init()
 {
 	// Shaders
-	auto phongShader = Shaders::Phong();
-	auto constantShader = Shaders::Constant();
-  auto skyboxShader = Shaders::Skybox(); 
+	auto phongShader = Shaders::Phong("forest");
+	auto constantShader = Shaders::Constant("forest");
+  auto skyboxShader = Shaders::Skybox("forest");
 
 	// Camera
 	auto camera = new Camera(windowWidth, windowHeight, glm::vec3(10.0f, 5.0f, 10.0f), glm::vec3(0.0f, 5.0f, 0.0f));
@@ -15,7 +15,7 @@ void ForestScene::init()
   camera->addObserver(skyboxShader);
 
 	// Lights
-	Light* directLight = new DirectLight(0, glm::vec3(-1.0, -1.0, -1.0), 0.1);
+	Light* directLight = new DirectLight(0, glm::vec3(-1.0, -1.0, -1.0), 0.5);
 	directLight->addObserver(phongShader);
 	Light* flashLight = new SpotLight(1, 5.0, 15.0);
 	flashLight->addObserver(phongShader);
@@ -27,9 +27,9 @@ void ForestScene::init()
 	fireLight3->addObserver(phongShader);
 
 	// Lights Objects
-	auto fireLight1Object = new DrawableObject(Models::Sphere(), constantShader);
-	auto fireLight2Object = new DrawableObject(Models::Sphere(), constantShader);
-	auto fireLight3Object = new DrawableObject(Models::Sphere(), constantShader);
+	auto fireLight1Object = new DrawableObject(ModelLib::Sphere(MaterialLib::Base(glm::vec3(1, 0, 0))), constantShader);
+	auto fireLight2Object = new DrawableObject(ModelLib::Sphere(MaterialLib::Base(glm::vec3(0, 1, 0))), constantShader);
+	auto fireLight3Object = new DrawableObject(ModelLib::Sphere(MaterialLib::Base(glm::vec3(0, 0, 1))), constantShader);
 
 	// Lights Transformations
 	auto fireLight1Position = Transformations::translate(40.0, 1.0, 40.0);
@@ -71,7 +71,13 @@ void ForestScene::init()
 	
 	// Create a model
 
-  this->skybox = new DrawableObject(Models::Skybox(), skyboxShader);
+  this->skybox = new DrawableObject(ModelLib::Skybox(), skyboxShader);
+
+  this->objects["house"] = new DrawableObject(ModelLib::House(), phongShader);
+	this->objects["login"] = new DrawableObject(ModelLib::Login(), phongShader);
+  this->objects["login"]->addTransform(Transformations::translateY(7));
+  this->objects["login"]->addTransform(Transformations::rotateY(90));
+  this->objects["login"]->addTransform(Transformations::scale(3));
 
   this->generateGrass(phongShader);
 	this->generateTrees(50, phongShader);
@@ -92,10 +98,10 @@ void ForestScene::init()
 
 void ForestScene::generateGrass(ShaderProgram* shaderProgram)
 {
-  auto grassMaterial = new Material(new Texture("src/models/textures/grass.png"));
+	auto grassMaterial = MaterialLib::getMaterial("src/models/textures/grass.png", glm::vec3(1.0), glm::vec3(1.0), glm::vec3(0.1), 16);
 	for (int x = -100; x < 100; x += 10 ) {
 		for (int z = -100; z < 100; z += 10) {
-      auto grass = new DrawableObject(Models::Plain(), shaderProgram, grassMaterial);
+      auto grass = new DrawableObject(ModelLib::Plain(grassMaterial), shaderProgram);
       grass->addTransform(Transformations::translate(x, 0.0, z));
       grass->addTransform(Transformations::scale(5));
 			this->objects["grass" + std::to_string(x) + "|" + std::to_string(z)] = grass;
@@ -113,11 +119,11 @@ void ForestScene::generateTrees(int n, ShaderProgram* shaderProgram)
 		int randXNeg = rand() % 2 ? -1 : 1;
 		int randZNeg = rand() % 2 ? -1 : 1;
 
-		float randScale = (float)(rand() % 10) / 10 + 0.5;
+		float randScale = (float)(rand() % 10) / 50 + 0.1;
 
-		auto treeObj = new DrawableObject(Models::Tree(), shaderProgram);
-		treeObj->addTransform(Transformations::scale(randScale));
+		auto treeObj = new DrawableObject(ModelLib::Tree(), shaderProgram);
 		treeObj->addTransform(Transformations::translate(randX * randXNeg, 0.0, randZ * randZNeg));
+		treeObj->addTransform(Transformations::scale(randScale));
 		this->objects["tree" + std::to_string(i)] = treeObj;
 	}	
 }
@@ -132,12 +138,28 @@ void ForestScene::generateBushes(int n, ShaderProgram* shaderProgram)
 		int randXNeg = rand() % 2 ? -1 : 1;
 		int randZNeg = rand() % 2 ? -1 : 1;
 
-		float randScale = (float)(rand() % 10) / 10 + 0.5;
+		float randScale = (float)(rand() % 10) / 3 + 1;
 
-		auto bushObj = new DrawableObject(Models::Bushes(), shaderProgram);
-		bushObj->addTransform(Transformations::scale(randScale));
+		auto bushObj = new DrawableObject(ModelLib::Bushes(), shaderProgram);
 		bushObj->addTransform(Transformations::translate(randX * randXNeg, 0.0, randZ * randZNeg));
+		bushObj->addTransform(Transformations::scale(randScale));
 		this->objects["bush" + std::to_string(i)] = bushObj;
 	}
 }
 
+void ForestScene::addTree(glm::vec3 position, bool zombie)
+{
+  auto translation = Transformations::translate(position);
+	if (zombie) {
+    auto zombie = new DrawableObject(ModelLib::Zombie(), Shaders::Phong("forest"));
+    zombie->addTransform(translation);
+		this->objects["zombie" + std::to_string(this->objects.size())] = zombie;
+	}
+	else
+	{
+		auto tree = new DrawableObject(ModelLib::Tree(), Shaders::Phong("forest"));
+		tree->addTransform(translation);
+		tree->addTransform(Transformations::scale(0.1));
+		this->objects["tree" + std::to_string(this->objects.size())] = tree;
+	}
+}

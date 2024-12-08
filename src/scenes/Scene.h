@@ -9,7 +9,7 @@
 #include "../lights/SpotLight.h"
 #include "../shaderProgram/Shaders.h"
 #include "../tranformations/Transformations.h"
-#include "../models/Models.h"
+#include "../models/ModelLib.h"
 
 
 class Scene
@@ -30,5 +30,6 @@ public:
 	void moveCamera(int key);
 	void lookCamera(float deltaX, float deltaY);
 	void updatePerspective(int width, int height);
+  Camera* getCamera();
 };
 

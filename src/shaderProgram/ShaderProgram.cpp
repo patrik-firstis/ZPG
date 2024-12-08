@@ -102,9 +102,9 @@ void ShaderProgram::notify(Subject* subject)
 	}
 }
 
-void ShaderProgram::setMaterial(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 color) {
-  this->setUniform("material.ambient", ambient);
-  this->setUniform("material.diffuse", diffuse);
-  this->setUniform("material.specular", specular);
-  this->setUniform("material.color", color);
+void ShaderProgram::setMaterial(Material* material) {
+  this->setUniform("material.ambient", material->getAmbient());
+  this->setUniform("material.diffuse", material->getDiffuse());
+  this->setUniform("material.specular", material->getSpecular());
+  this->setUniform("material.color", material->getColor());
 }

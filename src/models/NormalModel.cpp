@@ -1,7 +1,7 @@
 #include "NormalModel.h"
 
 
-NormalModel::NormalModel(const float* vertices, size_t size) : Model(size / sizeof(float) / 6) {
+NormalModel::NormalModel(const float* vertices, size_t size, Material* material) : Model(size / sizeof(float) / 6, material) {
   glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 
   glEnableVertexAttribArray(0);
@@ -16,4 +16,5 @@ NormalModel::NormalModel(const float* vertices, size_t size) : Model(size / size
 NormalModel::~NormalModel() {
   glDeleteBuffers(1, &VBO);
   glDeleteVertexArrays(1, &VAO);
+  free(material);
 }

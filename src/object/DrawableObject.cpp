@@ -4,11 +4,13 @@
 #include "../models/TextureModel.h"
 #include "../models/CubemapModel.h"
 
-DrawableObject::DrawableObject(Model* model, ShaderProgram* shaderProgram, Material* material, std::vector<Transformation*> animatedTransformation) {
+int DrawableObject::count = 0;
+
+DrawableObject::DrawableObject(Model* model, ShaderProgram* shaderProgram, std::vector<Transformation*> animatedTransformation) {
 	this->model = model;
 	this->shaderProgram = shaderProgram;
-  this->material = material;
   this->animatedTransformations = animatedTransformation;
+  this->id = count++;
 }
 
 
@@ -20,18 +22,20 @@ void DrawableObject::draw() {
 	}
 
   this->shaderProgram->setUniform("modelMatrix", modelMatrix);
-  this->shaderProgram->setMaterial(this->material->getAmbient(), this->material->getDiffuse(), this->material->getSpecular(), this->material->getColor());
-  this->material->bindTexture();
+  this->shaderProgram->setMaterial(this->model->getMaterial());
+  this->model->bindTexture();
 
 	if (auto skyboxModel = dynamic_cast<CubemapModel*>(this->model)) {
 		glDepthMask(GL_FALSE);
     this->shaderProgram->use();
+		glStencilFunc(GL_ALWAYS, this->id, 0x00);
     this->model->draw();
 		this->shaderProgram->setUniform("textureUnitID", 0);
     glDepthMask(GL_TRUE);
   }
   else {
 		this->shaderProgram->use();
+		glStencilFunc(GL_ALWAYS, this->id, 0xFF);
 		this->model->draw();
 		this->shaderProgram->setUniform("textureUnitID", 0);
   }

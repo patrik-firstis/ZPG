@@ -6,15 +6,10 @@
 #include <iostream>
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
-	// Update the viewport to the new window dimensions
 	glViewport(0, 0, width, height);
-
-	// You can print out the new width and height or use it in your rendering code
-	std::cout << "Window resized: " << width << "x" << height << std::endl;
 
 	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
 
-	// Call the method on the Application instance to update all scenes
 	if (app) {
 		app->updatePerspective(width, height);
 	}
@@ -77,13 +72,16 @@ void Application::run() {
   glEnable(GL_DEPTH_TEST);
 	glfwSwapInterval(0);
 	glShadeModel(GL_SMOOTH);
+	glEnable(GL_STENCIL_TEST);
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
   while (!glfwWindowShouldClose(window)) {
     // Clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
     // Render the triangle
-		handleInput(scenes[this->currentScene]);
+		
 		scenes[this->currentScene]->draw();
+		handleInput(scenes[this->currentScene]);
 
     // Swap buffers and poll events
     glfwSwapBuffers(window);
@@ -132,7 +130,15 @@ void Application::handleInput(Scene* scene) {
 		scene->lookCamera(0, -1);
 	}
 
-	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+  if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+    zPressed = true;
+  }
+	else
+	{
+    zPressed = false;
+	}
+
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
 	{
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
@@ -154,10 +160,48 @@ void Application::handleInput(Scene* scene) {
 
 		glfwSetCursorPos(window, (windowWidth / 2), (windowHeight / 2));
 	}
-	else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE)
+	else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_RELEASE)
 	{
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 		firstClick = true;
+	}
+
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS && !leftClickPressed)
+	{
+
+    leftClickPressed = true;
+
+		int width, height;
+		glfwGetFramebufferSize(window, &width, &height);
+		GLbyte color[4];
+		GLfloat depth;
+		GLuint index;
+
+    double x = width / 2;
+    double y = height / 2;
+
+		glfwGetCursorPos(window, &x, &y);
+
+    double correctY = height - y;
+
+		glReadPixels(x, correctY, 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, color);
+		glReadPixels(x, correctY, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &depth);
+		glReadPixels(x, correctY, 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
+		printf("Clicked on pixel %.2f, %.2f, color %02hhx%02hhx%02hhx%02hhx, depth % f, stencil index % u\n", x, y, color[0], color[1], color[2], color[3], depth, index);
+
+		glm::vec4 viewport = glm::vec4(0, 0, width, height);
+		glm::vec3 windowCoords = glm::vec3(x, correctY, depth);
+
+		glm::vec3 p = glm::unProject(windowCoords, scenes[currentScene]->getCamera()->getViewMatrix(), scenes[currentScene]->getCamera()->getProjectionMatrix(), viewport);
+
+    if (auto forestScene = dynamic_cast<ForestScene*>(this->scenes[this->currentScene])) {
+      forestScene->addTree(p, zPressed);
+    }
+	}
+
+  else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE && leftClickPressed)
+  {
+    leftClickPressed = false;
 	}
 }
 

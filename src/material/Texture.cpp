@@ -2,7 +2,7 @@
 #include "SOIL.h"
 #include <iostream>
 
-Texture::Texture(const std::string fileName) {
+Texture::Texture(const std::string fileName) : fileName(fileName){
   this->textureId = SOIL_load_OGL_texture(fileName.c_str(), SOIL_LOAD_RGBA, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y);
   if (this->textureId == 0) {
 	  fprintf(stderr, "SOIL texture loading error: '%s'\n", SOIL_last_result()); 
@@ -15,4 +15,8 @@ Texture::Texture(const std::string fileName) {
 void Texture::bind() {
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, this->textureId);
+}
+
+std::string Texture::getFileName() {
+  return this->fileName;
 }

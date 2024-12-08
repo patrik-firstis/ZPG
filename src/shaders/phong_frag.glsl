@@ -47,7 +47,7 @@ void main() {
   vec3 specular = vec3(0.0, 0.0, 0.0);
 	vec3 color = vec3(0.0, 0.0, 0.0);
 
-	if (length(fragTexCoord) > 0.0) {
+	if (material.color == 0.0) {
 		color = texture(textureUnitID, fragTexCoord).rgb;
 	}
 	else {
@@ -61,7 +61,7 @@ void main() {
 		specular += specularColor(light) * attenuation(light) * light.intensity;
 	}
   
-  fragColor = vec4(material.ambient + (ambient * color) + (diffuse * color) * material.diffuse + specular * material.specular, 0.0);
+  fragColor = vec4((ambient * color) * material.ambient + (diffuse * color) * material.diffuse + specular * material.specular, 0.0);
 }
 
 vec3 diffuseColor(Light light) {

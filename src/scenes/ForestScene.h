@@ -10,5 +10,6 @@ public:
   void generateGrass(ShaderProgram* shaderProgram);
 	void generateTrees(int n, ShaderProgram* shaderProgram);
 	void generateBushes(int n, ShaderProgram* shaderProgram);
+  void addTree(glm::vec3 position, bool zombie);
 };
 

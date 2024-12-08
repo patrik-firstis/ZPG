@@ -74,15 +74,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLEW_STATIC_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\lib\glfw-3.4.bin.WIN32\include;$(SolutionDir)\..\lib\glm-master;$(SolutionDir)\..\lib\soil\include;$(SolutionDir)\..\lib\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\lib\glfw-3.4.bin.WIN32\include;$(SolutionDir)\..\lib\glm-master;$(SolutionDir)\..\lib\soil\include;$(SolutionDir)\..\lib\assimp\include;$(SolutionDir)\..\lib\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\lib\glew-2.1.0\lib\Release\Win32;$(SolutionDir)\..\lib\glfw-3.4.bin.WIN32\lib-vc2022;$(SolutionDir)\..\lib\soil\lib-vc2012\Platform_Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;glew32s.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\lib\glew-2.1.0\lib\Release\Win32;$(SolutionDir)\..\lib\glfw-3.4.bin.WIN32\lib-vc2022;$(SolutionDir)\..\lib\soil\lib-vc2012\Platform_Win32;$(SolutionDir)\..\lib\assimp\lib\Win32\v140\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;SOIL.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -133,8 +134,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\material\MaterialLib.cpp" />
+    <ClCompile Include="src\material\TextureLib.cpp" />
+    <ClCompile Include="src\models\AssimpModel.cpp" />
     <ClCompile Include="src\models\CubemapModel.cpp" />
-    <ClCompile Include="src\object\Material.cpp" />
+    <ClCompile Include="src\material\Material.cpp" />
+    <ClCompile Include="src\models\ModelLib.cpp" />
     <ClCompile Include="src\models\NormalModel.cpp" />
     <ClCompile Include="src\models\PositionModel.cpp" />
     <ClCompile Include="src\application\Application.cpp" />
@@ -164,15 +169,18 @@
     <ClCompile Include="src\tranformations\Transformations.cpp" />
     <ClCompile Include="src\tranformations\Translation.cpp" />
     <ClCompile Include="src\shaderProgram\VertexShader.cpp" />
-    <ClCompile Include="src\object\Texture.cpp" />
+    <ClCompile Include="src\material\Texture.cpp" />
     <ClCompile Include="src\models\TextureModel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\material\MaterialLib.h" />
+    <ClInclude Include="src\material\TextureLib.h" />
+    <ClInclude Include="src\models\AssimpModel.h" />
     <ClInclude Include="src\models\CubemapModel.h" />
-    <ClInclude Include="src\object\Material.h" />
+    <ClInclude Include="src\material\Material.h" />
     <ClInclude Include="src\models\NormalModel.h" />
     <ClInclude Include="src\models\data\triangle.h" />
-    <ClInclude Include="src\models\Models.h" />
+    <ClInclude Include="src\models\ModelLib.h" />
     <ClInclude Include="src\models\PositionModel.h" />
     <ClInclude Include="src\application\Application.h" />
     <ClInclude Include="src\models\data\skybox\skycube.h" />
@@ -205,7 +213,7 @@
     <ClInclude Include="src\tranformations\Translation.h" />
     <ClInclude Include="src\models\data\tree.h" />
     <ClInclude Include="src\shaderProgram\VertexShader.h" />
-    <ClInclude Include="src\object\Texture.h" />
+    <ClInclude Include="src\material\Texture.h" />
     <ClInclude Include="src\models\TextureModel.h" />
   </ItemGroup>
   <ItemGroup>

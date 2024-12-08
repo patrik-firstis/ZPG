@@ -1,6 +1,6 @@
 #include "TextureModel.h"
 
-TextureModel::TextureModel(const float* vertices, size_t size) : Model(size / sizeof(float) / 8)
+TextureModel::TextureModel(const float* vertices, size_t size, Material* material) : Model(size / sizeof(float) / 8, material)
 {
   glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 
@@ -19,4 +19,5 @@ TextureModel::~TextureModel()
 {
   glDeleteBuffers(1, &VBO);
   glDeleteVertexArrays(1, &VAO);
+  free(material);
 }

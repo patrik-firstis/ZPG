@@ -5,12 +5,12 @@
 static class Shaders
 {
 private:
-	static std::vector<ShaderProgram*> shaders;
+	static std::unordered_map<std::string, ShaderProgram*> shaders;
 public:
 	~Shaders();
-	static ShaderProgram* Constant();
-	static ShaderProgram* Phong();
-	static ShaderProgram* Lambert();
-  static ShaderProgram* Skybox();
+	static ShaderProgram* Constant(std::string sceneName);
+	static ShaderProgram* Phong(std::string sceneName);
+	static ShaderProgram* Lambert(std::string sceneName);
+  static ShaderProgram* Skybox(std::string sceneName);
 };
 
