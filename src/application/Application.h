@@ -25,4 +25,5 @@ public:
   void run();
   void handleInput(Scene* scene);
 	void updatePerspective(int width, int height);
+	static void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 };

@@ -43,5 +43,10 @@ public:
   static Model* Login(Material* material = MaterialLib::Steel());
 
   static Model* Tree(Material* material = nullptr);
+
+	static Model* Earth(Material* material = nullptr);
+
+	static Model* Plane(Material* material = nullptr);
+
 };
 

@@ -12,7 +12,6 @@ uniform mat4 viewMatrix;
 uniform mat4 projectionMatrix;
 
 void main() {
-	
 	mat3 norm = transpose(inverse(mat3(modelMatrix)));
 	fragNormal = normalize(norm * normal);
 	fragPosition = vec3(modelMatrix * vec4(position, 1.0));

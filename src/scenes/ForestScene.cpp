@@ -78,6 +78,7 @@ void ForestScene::init()
   this->objects["login"]->addTransform(Transformations::translateY(7));
   this->objects["login"]->addTransform(Transformations::rotateY(90));
   this->objects["login"]->addTransform(Transformations::scale(3));
+	this->objects["login"]->addTransform(Transformations::rotateY(30, -1));
 
   this->generateGrass(phongShader);
 	this->generateTrees(50, phongShader);

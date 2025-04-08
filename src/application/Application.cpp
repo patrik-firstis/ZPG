@@ -5,15 +5,6 @@
 #include "../scenes/TestScene.h"
 #include <iostream>
 
-void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
-	glViewport(0, 0, width, height);
-
-	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
-
-	if (app) {
-		app->updatePerspective(width, height);
-	}
-}
 
 Application::Application(int width, int height) {
 	this->windowWidth = width;
@@ -65,8 +56,8 @@ void Application::run() {
 	Scene* ballsScene = new BallsScene(windowWidth, windowHeight);
 	ballsScene->init();
 
-	this->scenes.push_back(forestScene);
-	this->scenes.push_back(ballsScene);
+	//this->scenes.push_back(forestScene);
+	//this->scenes.push_back(ballsScene);
 	this->scenes.push_back(testScene);
 
   glEnable(GL_DEPTH_TEST);
@@ -212,3 +203,12 @@ void Application::updatePerspective(int width, int height) {
 	}
 }
 
+void Application::framebufferSizeCallback(GLFWwindow* window, int width, int height) {
+	glViewport(0, 0, width, height);
+
+	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+
+	if (app) {
+		app->updatePerspective(width, height);
+	}
+}

@@ -92,6 +92,40 @@ Model* ModelLib::House(Material* material) {
   return models[key];
 }
 
+Model* ModelLib::Earth(Material* material) {
+	std::string key = "earth|";
+	if (material == nullptr) {
+		key += "src/models/objects/earth/earth.png";
+		if (models.find(key) == models.end()) {
+			models[key] = new AssimpModel("src/models/objects/earth/flat_earth.obj", "src/models/objects/earth/Flat_earth.jpg");
+		}
+	}
+	else {
+		key += material->getIdentity();
+		if (models.find(key) == models.end()) {
+			models[key] = new AssimpModel("src/models/objects/earth/earth.obj", material);
+		}
+	}
+	return models[key];
+}
+
+Model* ModelLib::Plane(Material* material) {
+	std::string key = "plane|";
+	if (material == nullptr) {
+		key += "src/models/objects/plane/plane.png";
+		if (models.find(key) == models.end()) {
+			models[key] = new AssimpModel("src/models/objects/plane/jetanima.obj", "src/models/objects/plane/atlasjet-texture/atlasjet-white.png");
+		}
+	}
+	else {
+		key += material->getIdentity();
+		if (models.find(key) == models.end()) {
+			models[key] = new AssimpModel("src/models/objects/plane/plane.obj", material);
+		}
+	}
+	return models[key];
+}
+
 Model* ModelLib::Login(Material* material) {
   auto key = "login|" + material->getIdentity();
   if (models.find(key) == models.end()) {
