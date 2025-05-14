@@ -1,23 +1,20 @@
 #pragma once
-#include "AircraftType.h"
-
-using Location = std::pair<double, double>;
+#include "Airport.h"
+#include <string>
 
 class Aircraft
 {
 private:
-	char* owner;
-	AircraftType type;
-	Location location;
-	double speed;
-	double altitude;
-	double heading;
+	int topSpeed;
+	std::string code;
+	Airport* currentAirport;
+
 public:
-	Aircraft(char* owner, AircraftType& type, Location location);
-	char* get_owner();
-	AircraftType& get_type();
-	Location get_location();
-	void set_heading(double);
-	void move(int sec);
+	Aircraft(std::string code, int topSpeed = 650);
+	
+	void setCurrentAirport(Airport* airport);
+	Airport* getCurrentAirport();
+	int getSpeed();
+	std::string getCode();
 };
 

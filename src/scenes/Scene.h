@@ -25,7 +25,7 @@ protected:
 public:
 	Scene(int windowHeight, int windowWidth);
 	~Scene();
-	void draw();
+	virtual void draw();
 	virtual void init() = 0;
 	void moveCamera(int key);
 	void lookCamera(float deltaX, float deltaY);

@@ -14,7 +14,7 @@ private:
 	int currentScene = 0;
 	bool tabPressed = false;
   bool leftClickPressed = false;
-  bool zPressed = false;
+  bool gPressed = false;
   bool shiftPressed = false;
 
 public:

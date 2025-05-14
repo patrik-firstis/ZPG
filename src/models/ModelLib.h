@@ -46,7 +46,9 @@ public:
 
 	static Model* Earth(Material* material = nullptr);
 
-	static Model* Plane(Material* material = nullptr);
+	static Model* Plane(Material* material = MaterialLib::Base());
+
+  static Model* Atc(Material* material = MaterialLib::Gold());
 
 };
 

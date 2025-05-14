@@ -1,16 +1,24 @@
 #pragma once
-#include <utility>
-
-using Location = std::pair<double, double>;
+#include <glm/vec2.hpp>
+#include <string>
 
 class Airport
 {
 private:
-	char* name;
-	Location location;
+	double longitude;
+	double latitude;
+
+	int size;
+	std::string code;
+
 public:
-	Airport(char* name, double lat, double lon);
-	char* get_name();
-	Location get_location();
+	Airport(std::string code, double lon, double lat, int size = 5);
+
+	double getLongitute();
+	double getLatitute();
+	std::string getCode();
+	int getSize();
+	double getDistanceTo(Airport* other);
+	double getHeadingTo(Airport* other);
 };
 

@@ -121,12 +121,15 @@ void Application::handleInput(Scene* scene) {
 		scene->lookCamera(0, -1);
 	}
 
-  if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS && !zPressed) {
-    zPressed = true;
+  if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS && !gPressed) {
+		if (auto testScene = dynamic_cast<TestScene*>(this->scenes[this->currentScene])) {
+			testScene->switchTraffic();
+		}
+    gPressed = true;
   }
-	else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_RELEASE && zPressed)
+	else if (glfwGetKey(window, GLFW_KEY_G) == GLFW_RELEASE && gPressed)
 	{
-    zPressed = false;
+		gPressed = false;
 	}
 
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
@@ -186,8 +189,11 @@ void Application::handleInput(Scene* scene) {
 		glm::vec3 p = glm::unProject(windowCoords, scenes[currentScene]->getCamera()->getViewMatrix(), scenes[currentScene]->getCamera()->getProjectionMatrix(), viewport);
 
     if (auto forestScene = dynamic_cast<ForestScene*>(this->scenes[this->currentScene])) {
-      forestScene->addTree(p, zPressed);
+      forestScene->addTree(p, gPressed);
     }
+		else if (auto testScene = dynamic_cast<TestScene*>(this->scenes[this->currentScene])) {
+			testScene->addAtc(p);
+		}
 	}
 
   else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE && leftClickPressed)

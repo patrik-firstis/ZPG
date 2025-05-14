@@ -114,7 +114,7 @@ Model* ModelLib::Plane(Material* material) {
 	if (material == nullptr) {
 		key += "src/models/objects/plane/plane.png";
 		if (models.find(key) == models.end()) {
-			models[key] = new AssimpModel("src/models/objects/plane/jetanima.obj", "src/models/objects/plane/atlasjet-texture/atlasjet-white.png");
+			models[key] = new AssimpModel("src/models/objects/plane/LEGO.creator_plane.obj", "src/models/objects/plane/Avion_CREATOR_bleu - blanc - rouge_(réf; 4953 - 1).3ds");
 		}
 	}
 	else {
@@ -125,6 +125,24 @@ Model* ModelLib::Plane(Material* material) {
 	}
 	return models[key];
 }
+
+Model* ModelLib::Atc(Material* material) {
+  std::string key = "atc|";
+  if (material == nullptr) {
+    key += "src/models/objects/atc/atc.png";
+    if (models.find(key) == models.end()) {
+      models[key] = new AssimpModel("src/models/objects/plane/LEGO.creator_plane.obj", "src/models/objects/plane/Avion_CREATOR_bleu - blanc - rouge_(réf; 4953 - 1).3ds");
+    }
+  }
+  else {
+    key += material->getIdentity();
+    if (models.find(key) == models.end()) {
+      models[key] = new AssimpModel("src/models/objects/atc/atc3.obj", material);
+    }
+  }
+  return models[key];
+}
+
 
 Model* ModelLib::Login(Material* material) {
   auto key = "login|" + material->getIdentity();

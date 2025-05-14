@@ -134,6 +134,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\flightradar\Flight.cpp" />
+    <ClCompile Include="src\flightradar\Airport.cpp" />
+    <ClCompile Include="src\flightradar\Aircraft.cpp" />
     <ClCompile Include="src\material\MaterialLib.cpp" />
     <ClCompile Include="src\material\TextureLib.cpp" />
     <ClCompile Include="src\models\AssimpModel.cpp" />
@@ -173,6 +176,9 @@
     <ClCompile Include="src\models\TextureModel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\flightradar\Flight.h" />
+    <ClInclude Include="src\flightradar\Airport.h" />
+    <ClInclude Include="src\flightradar\Aircraft.h" />
     <ClInclude Include="src\material\MaterialLib.h" />
     <ClInclude Include="src\material\TextureLib.h" />
     <ClInclude Include="src\models\AssimpModel.h" />

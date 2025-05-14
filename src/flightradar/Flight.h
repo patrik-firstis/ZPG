@@ -1,19 +1,27 @@
 #pragma once
-#include "Airport.h"
 #include "Aircraft.h"
+#include "Airport.h"
+#include <chrono>
+
 
 class Flight
 {
 private:
-	Airport departurePort;
-	Airport destinationPort;
-	Aircraft aircraft;
-	time_t departureTime;
-	time_t arrivalTime;
-	int currentFlightTime;
+	Aircraft* aircraft;
+	Airport* origin;
+	Airport* destination;
+	std::chrono::time_point<std::chrono::system_clock> landingTime;
+
 public:
-	Flight(Airport&, Airport&, Aircraft&, time_t, time_t);
-	void update();
-	void calc_heading();
+	Flight(Aircraft* aircraft, Airport* origin, Airport* destination);
+
+	double getFlightTime();
+	double getFlightDistance();
+	double getHeading();
+	bool hasLanded();
+
+	Aircraft* getAircraft();
+	Airport* getOrigin();
+	Airport* getDestination();
 };
 
